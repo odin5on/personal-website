@@ -59,6 +59,6 @@ function Default() {
       </header>
     </div>
   );
-};
+}
 
 export default Default;

@@ -1,12 +1,12 @@
-import { Component } from 'react';
-import Default from './containers/default';
-import LandingPage from './containers/landingpage';
+import React from 'react';
 import ComingSoon from './containers/comingsoon';
 
-class App extends Component {
-  // const [count, setCount] = useState(0);
+class App extends React.Component {
   render(){
-    return <ComingSoon />
+    return (
+      /* @ts-expect-error Server Component */
+      <ComingSoon />
+    );
   }
 }
 
