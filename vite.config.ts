@@ -5,10 +5,10 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react(), eslintPlugin()],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
-  // base: '/personal-website/',
+  // resolve: {
+  //   alias: {
+  //     '@': path.resolve(__dirname, './src'),
+  //   },
+  // },
+  base: '/',
 });
