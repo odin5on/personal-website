@@ -1,0 +1,22 @@
+/node_modules
+.eslintcache
+package-lock.json
+
+# Ignore log files
+*.log
+
+# Ignore environment files
+.env
+
+# Ignore compiled files
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Ignore IDE files
+.idea/
+.vscode/
