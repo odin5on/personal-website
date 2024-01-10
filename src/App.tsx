@@ -1,11 +1,11 @@
 import React from 'react';
-import ComingSoon from './containers/comingsoon';
+import LandingPage2 from './containers/landingpage2';
 
 class App extends React.Component {
   render(){
     return (
       /* @ts-expect-error Server Component */
-      <ComingSoon />
+      <LandingPage2 />
     );
   }
 }
