@@ -1,4 +1,5 @@
 import profile from "../assets/images/profile263kb.jpg";
+import laptop from "../assets/images/laptop.png";
 import React, { useState } from "react";
 
 const LandingPage2 = () => {
@@ -14,14 +15,13 @@ const LandingPage2 = () => {
   };
 
   return (
-    <div className="flex h-full min-h-screen w-full flex-col border-dark bg-light text-dark dark:border-light dark:bg-dark dark:text-light">
+    <div className="relative flex h-full min-h-screen w-full flex-col border-dark bg-light text-dark dark:border-light dark:bg-dark dark:text-light">
       <div
         id="navbar"
         className="flex items-center justify-between border-b-2 p-4"
       >
-        <h1 className="font-dots text-6xl font-bold tracking-widest">
-          DANNY BODIN
-        </h1>
+        <h1 className="font-dots text-6xl tracking-widest">DANNY BODIN</h1>
+        <h1 className="font-dots text-4xl tracking-widest">ABOUT</h1>
         <label className="relative inline-flex flex-shrink-0 cursor-pointer items-center">
           <input
             type="checkbox"
@@ -36,7 +36,7 @@ const LandingPage2 = () => {
           </span>
         </label>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap pb-20">
         <div className="w-full lg:w-1/2">
           <div className="m-4 flex flex-col gap-2 rounded-xl border-2 p-4">
             <div className="my-4 flex justify-center text-4xl">
@@ -99,8 +99,11 @@ const LandingPage2 = () => {
               </div>
               <div className="py-2 pl-4">
                 I am employed by All American Concrete to work on this project,
-                and work with my friend{" "}
-                <a href="https://twitter.com/JoshWootonn" className="underline hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark">
+                and I work with my friend{" "}
+                <a
+                  href="https://twitter.com/JoshWootonn"
+                  className="underline hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark"
+                >
                   Josh
                 </a>
                 , who started it.
@@ -137,6 +140,11 @@ const LandingPage2 = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="absolute bottom-0 flex h-20 w-full items-center justify-center p-4">
+        <footer className="text-center font-dots tracking-widest">
+          <p>&copy;2024 Danny Bodin</p>
+        </footer>
       </div>
     </div>
   );
