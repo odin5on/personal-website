@@ -1,101 +1,106 @@
-import x from "../assets/images/x.svg";
 import profile from "../assets/images/profile263kb.jpg";
-import { useState } from "react";
 
-import Navbar from "../components/navbar";
-
-const LandingPage = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 20, y: 20 });
-
-  const scale = -1;
-  const o = document.getElementById("bx");
-
-  const scaleToCenter = (x, y) => {
-    return {
-      x: x - window.innerWidth / 2,
-      y: y - window.innerHeight / 2,
-    };
-  };
-
-  const scaleToPage = (x, y) => {
-    return {
-      x: x + window.innerWidth / 2,
-      y: y + window.innerHeight / 2,
-    };
-  };
-
-  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    let { x, y } = scaleToCenter(event.clientX, event.clientY);
-
-    const distance = Math.sqrt(x * x + y * y);
-    // console.log(distance);
-    const angle = Math.atan2(y, x);
-    // console.log(angle);
-
-    const d = scaleToCenter(o?.offsetLeft, o?.offsetTop);
-
-    const max_distance = Math.sqrt(d.x ** 2 + d.y ** 2);
-
-    const newDistance = max_distance - distance;
-    // const newDistance = 10000/distance;
-    // console.log(newDistance);
-    // const newDistance = distance;
-    const newAngle = angle + Math.PI;
-
-    // o_x = o.offsetWidth / 2
-
-    // Calculate the new point coordinates
-    const newX = newDistance * Math.cos(newAngle);
-    const newY = newDistance * Math.sin(newAngle);
-
-    setMousePosition({ x: newX, y: newY });
-  };
-
+const LandingPage: React.FC = () => {
   return (
-    <div id="screen" className="flex h-screen justify-center bg-primary">
-      {/* Your app content goes here */}
-      <div className="flex h-full w-full flex-col justify-between">
-        <Navbar />
-        <div
-          id="bx"
-          className="flex flex-col items-center justify-center"
-          // onMouseMove={handleMouseMove}
-        >
-          <div
-            id="center"
-            className="text-center text-7xl font-extrabold italic"
-            style={{
-              textShadow: `${mousePosition.x}px ${mousePosition.y}px 10px rgba(103, 214, 171, 0.9)`,
-            }}
-          >
-            I BUILD STUFF
+    <div className="flex flex-wrap pb-20">
+      <div className="w-full lg:w-1/2">
+        <div className="m-4 flex flex-col gap-2 rounded-xl border-2 p-4">
+          <div className="my-4 flex justify-center text-4xl">i build stuff</div>
+          <div className="my-2 flex justify-center">
+            <img
+              src={profile}
+              alt="Danny Bodin's profile picture"
+              className="h-48 rounded-full border-2"
+            />
+          </div>
+          <div className="my-2 border p-4">
+            I am{" "}
+            <a
+              href="https://twitter.com/danny_bodin"
+              className="font-bold hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark"
+            >
+              @danny_bodin
+            </a>
+            , a Computer Science Engineering student at the University of Iowa
+            graduating in May 2024. I want to be a great engineer who builds
+            useful, practical, and well designed products.
+          </div>
+          <div className="my-2 rounded-3xl">
+            <a
+              href="https://github.com/odin5on"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className=" text-md w-full rounded-full border-2 p-2 text-center font-dots tracking-widest hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark">
+                View my Github
+              </button>
+            </a>
+          </div>
+          <div className="my-2 rounded-3xl">
+            <a
+              href="https://twitter.com/danny_bodin"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className=" text-md w-full rounded-full border-2 p-2 text-center font-dots tracking-widest hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark">
+                View my Twitter
+              </button>
+            </a>
           </div>
         </div>
-        <div className="flex items-center justify-center">
-          <div className="flex flex-col border-8 border-black p-4 font-mono">
-            <div className="flex place-items-baseline text-3xl font-bold mb-5">
-              Follow me on{" "}
-              <a href="https://twitter.com/danny_bodin" className="ml-4">
-                <img src={x} alt="X logo" className="h-9" />
+      </div>
+      <div className="w-full lg:w-1/2">
+        <div className="m-4 flex flex-col gap-2 rounded-xl border-2 p-4">
+          <div className="my-4 flex justify-center text-4xl">projects</div>
+          <div className="my-2 border">
+            <div className="bg-dark bg-opacity-10 py-4 pl-4 font-dots tracking-wide underline dark:bg-light dark:bg-opacity-10">
+              <a
+                href="https://github.com/joshuawootonn/time-track"
+                className="hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark"
+              >
+                time-track
               </a>
             </div>
-            <div className="text-xl">
-                <p className="mb-1">I post about what I&apos;m building,</p>
-                <p>DM me to start a conversation!</p>
-            </div>
-            <div className="flex justify-end mt-5">
-              <a href="https://twitter.com/danny_bodin" className="border-4 border-black bg-accent px-2 py-1 italic font-bold text-2xl" style={{ boxShadow: "4px 4px 0px rgba(0, 0, 0, 1)" }}>Follow</a>
+            <div className="py-2 pl-4">
+              I am employed by All American Concrete to work on this project,
+              and I work with my friend{" "}
+              <a
+                href="https://twitter.com/JoshWootonn"
+                className="underline hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark"
+              >
+                Josh
+              </a>
+              , who started it.
             </div>
           </div>
-        </div>
-        <div className="flex bg-secondary">
-          <img src={profile} alt="" className="h-24" />
-          <div className="flex flex-col items-center justify-center border border-black p-2 font-mono min-w-fit">
-            <div className="text-xl">PHOTOGRAPHED</div>
-            <div className="text-2xl">05 23 2023</div>
+          <div className="my-2 border">
+            <div className="bg-dark bg-opacity-10 py-4 pl-4 font-dots tracking-wide underline dark:bg-light dark:bg-opacity-10">
+              <a
+                href="https://github.com/odin5on/personal-website"
+                className="hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark"
+              >
+                this website
+              </a>
+            </div>
+            <div className="py-2 pl-4">
+              I started this to highlight my projects and skills, and to walk
+              through the whole process of building a website from scratch. Also
+              to design it (this is my second design :))
+            </div>
           </div>
-          <div className="flex w-full items-center justify-center border-y border-r border-black font-mono">
-            <div className="text-2xl">Website version 1.1</div>
+          <div className="my-2 border">
+            <div className="bg-dark bg-opacity-10 py-4 pl-4 font-dots tracking-wide underline dark:bg-light dark:bg-opacity-10">
+              <a
+                href="https://github.com/odin5on"
+                className="hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark"
+              >
+                embedded projects
+              </a>
+            </div>
+            <div className="py-2 pl-4">
+              I have many other projects I have completed in different classes
+              that I plan to polish up the presentation of and highlight here!
+            </div>
           </div>
         </div>
       </div>

@@ -1,23 +1,36 @@
-import x from "../assets/images/x.svg";
-import git from "../assets/images/git.svg";
+type NavbarProps = {
+  isDarkMode: boolean;
+  handleDarkModeToggle: () => void;
+};
 
-const Navbar = () => {
+const Navbar: React.FC<NavbarProps> = ({
+  isDarkMode,
+  handleDarkModeToggle,
+}) => {
   return (
-    <div className="flex h-24 justify-between bg-secondary px-4 font-dots2 border border-black">
-      <div className="flex h-full flex-auto basis-full items-center text-5xl">
-        DANNY BODIN
-      </div>
-      <div className="flex flex-auto h-full basis-full items-center justify-center text-xl">
-        IOWA CITY, IA
-      </div>
-      <div className="flex flex-auto basis-full h-full items-center justify-end gap-8">
-        <a href="https://twitter.com/danny_bodin">
-          <img src={x} alt="X logo" className="h-10" />
-        </a>
-        <a href="https://github.com/odin5on">
-          <img src={git} alt="Github logo" className="h-10" />
-        </a>
-      </div>
+    <div
+      id="navbar"
+      className="flex items-center justify-between border-b-2 p-4"
+    >
+      <a href="/">
+        <h1 className="font-dots text-6xl tracking-widest hover:underline">DANNY BODIN</h1>
+      </a>
+      <a href="/about">
+        <h1 className="font-dots text-4xl tracking-widest hover:underline">ABOUT</h1>
+      </a>
+      <label className="relative inline-flex flex-shrink-0 cursor-pointer items-center">
+        <input
+          type="checkbox"
+          checked={isDarkMode}
+          onChange={handleDarkModeToggle}
+          value=""
+          className="peer sr-only"
+        />
+        <div className="peer-checked:after:border-white after:bg-white after:border-gray-300 dark:border-gray-600 peer-checked:bg-blue-600 peer h-7 w-12 rounded-full border-2 after:absolute after:start-[4px] after:top-1 after:h-5 after:w-5 after:rounded-full after:border after:bg-dark after:transition-all after:content-[''] peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full dark:after:bg-light"></div>
+        <span className="text-gray-900 dark:text-gray-300 ms-3 text-sm font-medium">
+          Dark Mode
+        </span>
+      </label>
     </div>
   );
 };
