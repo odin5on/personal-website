@@ -1,5 +1,5 @@
-import { useState } from "react";
-import LandingPage2 from "./containers/landingpage";
+import React, { useState } from "react";
+import LandingPage from "./containers/landingpage";
 import About from "./containers/about";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Navbar from "./components/navbar";
@@ -8,7 +8,7 @@ import Footer from "./components/footer";
 const routes = [
   {
     path: "/",
-    element: <LandingPage2 />,
+    element: <LandingPage />,
   },
   {
     path: "/about",

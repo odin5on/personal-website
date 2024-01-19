@@ -1,3 +1,5 @@
+import React from "react";
+
 const Footer: React.FC = () => {
   return (
     <div className="absolute bottom-0 flex h-20 w-full items-center justify-center p-4">

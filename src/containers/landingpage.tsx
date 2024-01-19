@@ -1,3 +1,4 @@
+import React from "react";
 import profile from "../assets/images/profile263kb.jpg";
 
 const LandingPage: React.FC = () => {

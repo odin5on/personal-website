@@ -1,3 +1,5 @@
+import React from "react";
+
 import laptop from "../assets/images/laptop.png";
 
 const About: React.FC = () => {

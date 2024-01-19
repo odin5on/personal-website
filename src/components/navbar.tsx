@@ -1,3 +1,5 @@
+import React from "react";
+
 type NavbarProps = {
   isDarkMode: boolean;
   handleDarkModeToggle: () => void;
