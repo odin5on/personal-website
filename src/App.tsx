@@ -17,7 +17,7 @@ const routes = [
 ];
 
 const router = createBrowserRouter(routes, {
-  basename: "/",
+  basename: "dannybodin.tech/",
 });
 
 const App = () => {
