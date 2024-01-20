@@ -11,14 +11,12 @@ const routes = [
     element: <LandingPage2 />,
   },
   {
-    path: "/about",
+    path: "about",
     element: <About />,
   },
 ];
 
-const router = createBrowserRouter(routes, {
-  basename: "dannybodin.tech/",
-});
+const router = createBrowserRouter(routes);
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
