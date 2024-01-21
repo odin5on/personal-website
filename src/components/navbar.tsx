@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { ThemeContext } from "../contexts/theme-context";
 
 const Navbar: React.FC = () => {
@@ -9,16 +10,16 @@ const Navbar: React.FC = () => {
       id="navbar"
       className="flex items-center justify-between border-b-2 p-4"
     >
-      <a href="/">
+      <Link to="/">
         <h1 className="font-dots text-6xl tracking-widest hover:underline">
           DANNY BODIN
         </h1>
-      </a>
-      <a href="/about">
+      </Link>
+      <Link to="about">
         <h1 className="font-dots text-4xl tracking-widest hover:underline">
           ABOUT
         </h1>
-      </a>
+      </Link>
       <label className="relative inline-flex flex-shrink-0 cursor-pointer items-center">
         <input
           type="checkbox"
