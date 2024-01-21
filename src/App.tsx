@@ -1,14 +1,14 @@
 import { useState } from "react";
-import LandingPage2 from "./containers/landingpage";
+import LandingPage from "./containers/landingpage";
 import About from "./containers/about";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
+
+import { ThemeContext } from "./contexts/theme-context";
 
 const routes = [
   {
     path: "/",
-    element: <LandingPage2 />,
+    element: <LandingPage />,
   },
   {
     path: "about",
@@ -19,25 +19,35 @@ const routes = [
 const router = createBrowserRouter(routes);
 
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const isBrowserDefaulDark = () =>
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  const handleDarkModeToggle = () => {
-    setIsDarkMode(!isDarkMode);
-    if (!isDarkMode) {
+  const getDefaultTheme = (): string => {
+    const localStorageTheme = localStorage.getItem("default-theme");
+    const browserDefault = isBrowserDefaulDark() ? "dark" : "light";
+    return localStorageTheme || browserDefault;
+  };
+
+  const [theme, setTheme] = useState(getDefaultTheme());
+
+  const handleThemeChange = (theme: string): void => {
+    if (theme == "light") {
+      setTheme("dark");
+      localStorage.setItem("default-theme", "dark");
       document.documentElement.classList.add("dark");
     } else {
+      setTheme("light");
+      localStorage.setItem("default-theme", "light");
       document.documentElement.classList.remove("dark");
     }
   };
+
   return (
-    <div className="relative flex h-full min-h-screen w-full flex-col border-dark bg-light text-dark dark:border-light dark:bg-dark dark:text-light">
-      <Navbar
-        isDarkMode={isDarkMode}
-        handleDarkModeToggle={handleDarkModeToggle}
-      />
-      <RouterProvider router={router} />
-      <Footer />
-    </div>
+    <ThemeContext.Provider value={{ theme, handleThemeChange }}>
+      <div className="relative flex h-full min-h-screen w-full flex-col border-dark bg-light text-dark dark:border-light dark:bg-dark dark:text-light">
+        <RouterProvider router={router} />
+      </div>
+    </ThemeContext.Provider>
   );
 };
 
