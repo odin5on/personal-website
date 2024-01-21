@@ -1,28 +1,29 @@
-type NavbarProps = {
-  isDarkMode: boolean;
-  handleDarkModeToggle: () => void;
-};
+import React, { useContext } from "react";
+import { ThemeContext } from "../contexts/theme-context";
 
-const Navbar: React.FC<NavbarProps> = ({
-  isDarkMode,
-  handleDarkModeToggle,
-}) => {
+const Navbar: React.FC = () => {
+  const { theme, handleThemeChange } = useContext(ThemeContext);
+
   return (
     <div
       id="navbar"
       className="flex items-center justify-between border-b-2 p-4"
     >
       <a href="/">
-        <h1 className="font-dots text-6xl tracking-widest hover:underline">DANNY BODIN</h1>
+        <h1 className="font-dots text-6xl tracking-widest hover:underline">
+          DANNY BODIN
+        </h1>
       </a>
       <a href="/about">
-        <h1 className="font-dots text-4xl tracking-widest hover:underline">ABOUT</h1>
+        <h1 className="font-dots text-4xl tracking-widest hover:underline">
+          ABOUT
+        </h1>
       </a>
       <label className="relative inline-flex flex-shrink-0 cursor-pointer items-center">
         <input
           type="checkbox"
-          checked={isDarkMode}
-          onChange={handleDarkModeToggle}
+          checked={theme == "light"}
+          onChange={() => handleThemeChange(theme)}
           value=""
           className="peer sr-only"
         />
