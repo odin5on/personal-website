@@ -34,17 +34,19 @@ const App = () => {
     if (theme == "light") {
       setTheme("dark");
       localStorage.setItem("default-theme", "dark");
+      document.body.style.backgroundColor = "#000000";
       document.documentElement.classList.add("dark");
     } else {
       setTheme("light");
       localStorage.setItem("default-theme", "light");
+      document.body.style.backgroundColor = "#D9E3DC";
       document.documentElement.classList.remove("dark");
     }
   };
 
   return (
     <ThemeContext.Provider value={{ theme, handleThemeChange }}>
-      <div className="relative flex h-full min-h-screen w-full flex-col border-dark bg-light text-dark dark:border-light dark:bg-dark dark:text-light">
+      <div className="relative flex h-full min-h-screen w-full flex-col border-dark bg-light text-dark dark:border-light dark:bg-dark dark:text-light overscroll-contain">
         <RouterProvider router={router} />
       </div>
     </ThemeContext.Provider>
