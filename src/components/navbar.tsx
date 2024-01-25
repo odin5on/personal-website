@@ -15,13 +15,8 @@ const Navbar: React.FC = () => {
           DANNY BODIN
         </h1>
       </Link>
-      {/* <Link to="about">
-        <h1 className="mx-2 font-dots text-4xl tracking-widest hover:underline">
-          ABOUT
-        </h1>
-      </Link> */}
-      <Link to="projects">
-        <h1 className="mx-2 font-dots text-4xl tracking-widest hover:underline">
+      <Link to="/projects">
+        <h1 className="mx-2 font-dots text-4xl hover:underline">
           PROJECTS
         </h1>
       </Link>

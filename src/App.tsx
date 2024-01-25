@@ -1,6 +1,7 @@
 import { useState } from "react";
 import LandingPage from "./containers/landingpage";
 import About from "./containers/about";
+import Projects from "./containers/projects";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { ThemeContext } from "./contexts/theme-context";
@@ -14,6 +15,10 @@ const routes = [
     path: "about",
     element: <About />,
   },
+  {
+    path: "projects",
+    element: <Projects />
+  }
 ];
 
 const router = createBrowserRouter(routes);
@@ -25,7 +30,15 @@ const App = () => {
   const getDefaultTheme = (): string => {
     const localStorageTheme = localStorage.getItem("default-theme");
     const browserDefault = isBrowserDefaulDark() ? "dark" : "light";
-    return localStorageTheme || browserDefault;
+    const theme = localStorageTheme || browserDefault;
+    if (theme == "dark") {
+      document.body.style.backgroundColor = "#000000";
+      document.documentElement.classList.add("dark");
+    } else {
+      document.body.style.backgroundColor = "#D9E3DC";
+      document.documentElement.classList.remove("dark");
+    }
+    return theme;
   };
 
   const [theme, setTheme] = useState(getDefaultTheme());
