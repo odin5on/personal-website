@@ -59,7 +59,7 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={{ theme, handleThemeChange }}>
-      <div className="relative flex h-full min-h-screen w-full flex-col border-dark bg-light text-dark dark:border-light dark:bg-dark dark:text-light overscroll-contain">
+      <div className="relative flex h-full min-h-screen w-full flex-col border-dark bg-light text-dark dark:border-light dark:bg-dark dark:text-light overscroll-contain" style={{ backgroundImage: 'url("/src/assets/images/noise-light.png")' }}>
         <RouterProvider router={router} />
       </div>
     </ThemeContext.Provider>
